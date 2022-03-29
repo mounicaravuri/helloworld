@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f02edfc4-52eb-4b34-9021-9f8e48edad42" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="hello_muleFlow" doc:id="b13d5e2f-1bc5-4874-80e9-023342c6638b" >
+		<http:listener doc:name="Listener" doc:id="6a43eed6-b4e1-4d37-9b6b-2ede5f4d15ff" config-ref="HTTP_Listener_config" path="/hellomule"/>
+		<set-payload value="Hello mule" doc:name="Set Payload" doc:id="2d49b80b-4ec4-4783-b8e0-b1bc771bfed0" />
+		<logger level="INFO" doc:name="Logger" doc:id="3752d645-04fe-49f2-b612-7bf3e7b7aae2" message="attributes.requestPath"/>
+	</flow>
+</mule>
